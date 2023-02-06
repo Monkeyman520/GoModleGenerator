@@ -1,4 +1,4 @@
-package GoModleGenerator
+package main
 
 import "gorm.io/gorm"
 
@@ -12,11 +12,12 @@ type ModelGenerator struct {
 	prefix         string
 	config         *GeneratorConfig
 	err            []error
-	realNameMethod string
+	realNameMethod bool
 	enableJsonTag  bool   // 是否添加json的tag, 默认不添加
 	packageName    string // 生成struct的包名(默认为空的话, 则取名为: package model)
 	tagKey         string // tag字段的key值,默认是orm
 	dateToTime     bool   // 是否将 date相关字段转换为 time.Time,默认否
+
 }
 
 // NewModelGenerator New a ModelGenerator with args.
@@ -68,9 +69,9 @@ func WithGeneratorConfig(config *GeneratorConfig) option {
 }
 
 // WithRealNameMethod Init ModelGenerator with realNameMethod.
-func WithRealNameMethod(method string) option {
+func WithRealNameMethod() option {
 	return func(m *ModelGenerator) {
-		m.realNameMethod = method
+		m.realNameMethod = true
 	}
 }
 
@@ -115,7 +116,7 @@ type GeneratorConfig struct {
 
 // NewGeneratorConfig New a generator config with args.
 func NewGeneratorConfig(generatorOptions ...generatorOption) *GeneratorConfig {
-    // TODO: Add default value.
+	// TODO: Add default value.
 	gc := new(GeneratorConfig)
 	for _, opt := range generatorOptions {
 		opt(gc)

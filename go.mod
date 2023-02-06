@@ -3,8 +3,8 @@ module github.com/Monkeyman520/GoModleGenerator
 go 1.19
 
 require (
-	gorm.io/driver/mysql v1.4.3
-	gorm.io/gorm v1.24.1
+	gorm.io/driver/mysql v1.4.4
+	gorm.io/gorm v1.24.2
 )
 
 require (
