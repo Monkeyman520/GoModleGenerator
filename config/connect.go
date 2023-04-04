@@ -22,6 +22,9 @@ type DatabaseConfig struct {
 
 	// Schema the database schema
 	Schema string `json:"Schema" yaml:"Schema"`
+
+	// Debug open the gorm Debug mode default false
+	Debug bool `json:"Debug" yaml:"Debug"`
 }
 
 // DSN return the database source name to connect to the database
@@ -104,5 +107,12 @@ func WithPassword(password string) DatabaseOption {
 func WithSchema(schema string) DatabaseOption {
 	return func(dc *DatabaseConfig) {
 		dc.Schema = schema
+	}
+}
+
+// WithDebug Init DatabaseConfig with debug mode
+func WithDebug() DatabaseOption {
+	return func(dc *DatabaseConfig) {
+		dc.Debug = true
 	}
 }

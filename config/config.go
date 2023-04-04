@@ -88,6 +88,10 @@ func (mg *ModelGenerator) PreCheck() error {
 		return internalError.DbConnectionError
 	}
 
+	if mg.Database.Debug {
+		db = db.Debug()
+	}
+
 	_dbOnce.Do(func() {
 		SetDB(db)
 	})
