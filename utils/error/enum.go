@@ -11,4 +11,9 @@ var (
 	ViperReadError    = NewPreDefineZhCNInternalError("viper read error", "viper读取配置失败")
 
 	TablesSearchError = NewPreDefineZhCNInternalError("search table error", "table筛选失败")
+
+	CheckPathError = NewPreDefineZhCNInternalError("check path error", "路径检查失败")
+	MakePathError  = NewPreDefineZhCNInternalError("create path error", "创建路径失败")
+
+	UnknowPathError = NewPreDefineZhCNInternalError("check path end with unknown error", "路径检查未知错误")
 )
