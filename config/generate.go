@@ -60,6 +60,7 @@ func WithGormModel() GeneratorOption {
 func WithJsonTag() GeneratorOption {
 	return func(gc *GeneratorConfig) {
 		gc.JsonTag = true
+		gc.TagKeys = append(gc.TagKeys, "json")
 	}
 }
 
@@ -115,7 +116,7 @@ func WithTables(tables []string) GeneratorOption {
 }
 
 // WithTagKeys Init GeneratorConfig with other tags
-// such as "gorm" "yaml"
+// such as "orm" "yaml"
 func WithTagKeys(tagKeys []string) GeneratorOption {
 	return func(gc *GeneratorConfig) {
 		gc.TagKeys = append(gc.TagKeys, tagKeys...)
